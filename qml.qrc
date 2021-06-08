@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Page1Form.ui.qml</file>
+        <file>Page2Form.ui.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>DaysOfLife.qml</file>
+        <file>DaysOfLifeForm.ui.qml</file>
+        <file>StatusBar.qml</file>
+        <file>StatusBarForm.ui.qml</file>
+        <file>SunScreen.qml</file>
+        <file>Booty.qml</file>
+        <file>Phoney.qml</file>
+    </qresource>
+</RCC>
