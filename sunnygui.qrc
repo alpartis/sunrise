@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/forms">
-        <file alias="SunScreen">../sunnygui/SunScreen.ui.qml</file>
+        <file alias="SunScreenForm">../sunnygui/SunScreen.ui.qml</file>
     </qresource>
 </RCC>

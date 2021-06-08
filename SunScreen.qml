@@ -1,11 +1,11 @@
 import QtQuick 2.12
-import "qrc:/forms"
+import "qrc:/forms/SunScreenForm"
 
 Item {
     width: parent.width
     height: parent.height
 
-    SunScreen {
+    SunScreenForm {
         anchors.fill: parent
     }
 }
