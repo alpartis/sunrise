@@ -13,7 +13,7 @@ Item {
         width: parent.width - 16
         height: parent.height * .5
         color: SunStyles.sunshineYellow
-        text: qsTr("sunrise")
+        text: qsTr("sunrise boot")
         font.pixelSize: height
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

@@ -7,7 +7,7 @@ Item {
     StackView {
         id: stackPhoney
         anchors.fill: parent
-        initialItem: "qrc:/forms/SunScreen.qml"
+        initialItem: SunScreen
     }
 }
 

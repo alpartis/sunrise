@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/forms">
-        <file alias="SunScreen.qml">../sunnygui/SunScreen.ui.qml</file>
+        <file alias="SunScreenForm">../sunnygui/SunScreenForm.ui.qml</file>
     </qresource>
     <qresource prefix="/imports/sunnygui">
         <file>../sunnygui/imports/sunnygui/designer/plugin.metainfo</file>

@@ -66,6 +66,7 @@ ApplicationWindow {
                 onClicked: {
                     phoney.visible = true
                     phoney.stackPhoney.pop()
+                    phoney.stackPhoney.push("qrc:/SunScreen.qml")
                     drawer.close()
                     drawer_open = false
                 }
@@ -135,6 +136,7 @@ ApplicationWindow {
             console.debug("loaderSid.onLoaded(): source: [", source, "]")
             if (source == "qrc:/Phoney.qml") {
                 phoney.visible = true
+                Booty.visible = false
                 console.log("phoney is visible")
             } else {
                 phoney.visible = false
