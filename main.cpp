@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     QString path = QGuiApplication::applicationDirPath();
+    engine.addImportPath("qrc:/sunnygui");
     engine.addImportPath("qrc:/forms");
     engine.addImportPath("qrc:/imports");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
