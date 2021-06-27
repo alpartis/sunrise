@@ -1,7 +1,4 @@
 <RCC>
-    <qresource prefix="/sunnygui">
-        <file>../sunnygui/SunScreenForm.ui.qml</file>
-    </qresource>
     <qresource prefix="/imports/sunnygui">
         <file>../sunnygui/imports/sunnygui/designer/plugin.metainfo</file>
         <file alias="Constants.qml">../sunnygui/imports/sunnygui/Constants.qml</file>
@@ -10,5 +7,9 @@
         <file alias="EventListSimulator.qml">../sunnygui/imports/sunnygui/EventListSimulator.qml</file>
         <file alias="qmldir">../sunnygui/imports/sunnygui/qmldir</file>
         <file alias="SunStyles.qml">../sunnygui/imports/sunnygui/SunStyles.qml</file>
+    </qresource>
+    <qresource prefix="/forms">
+        <file alias="qmldir">../sunnygui/forms/qmldir</file>
+        <file alias="SunScreenForm.ui.qml">../sunnygui/forms/SunScreenForm.ui.qml</file>
     </qresource>
 </RCC>
