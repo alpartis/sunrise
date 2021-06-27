@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     QString path = QGuiApplication::applicationDirPath();
-    engine.addImportPath("qrc:/forms");
+    engine.addImportPath("qrc:/");
     engine.addImportPath("qrc:/imports");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

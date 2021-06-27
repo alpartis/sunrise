@@ -7,6 +7,9 @@
         <file alias="EventListSimulator.qml">../sunnygui/imports/sunnygui/EventListSimulator.qml</file>
         <file alias="qmldir">../sunnygui/imports/sunnygui/qmldir</file>
         <file alias="SunStyles.qml">../sunnygui/imports/sunnygui/SunStyles.qml</file>
-        <file alias="SunScreenForm.ui.qml">../sunnygui/imports/sunnygui/SunScreenForm.ui.qml</file>
+    </qresource>
+    <qresource prefix="/forms">
+        <file alias="qmldir">../sunnygui/forms/qmldir</file>
+        <file alias="SunScreenForm.ui.qml">../sunnygui/forms/SunScreenForm.ui.qml</file>
     </qresource>
 </RCC>
