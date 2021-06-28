@@ -32,7 +32,7 @@ Rectangle {
         anchors.rightMargin: 8
         anchors.leftMargin: 8
         anchors.bottomMargin: 8
-        initialItem: DaysOfLife
+        initialItem: "qrc:/DaysOfLife.qml"
     }
 }
 
