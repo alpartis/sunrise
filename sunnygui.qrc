@@ -14,6 +14,6 @@
     </qresource>
     <qresource prefix="../imports/ui_art_assets">
         <file alias="qmldir">../sunnygui/imports/ui_art_assets/qmldir</file>
-        <file alias="hamburg.svg">../sunnygui/imports/ui_art_assets/hamburg.svg</file>
+        <file alias="hamburg.svg">../sunnygui/imports/ui_art_assets/hamburger.svg</file>
     </qresource>
 </RCC>
