@@ -41,9 +41,25 @@ ApplicationWindow {
             }
         }
     }
+    /*
     Phoney {
         id: phoney
         visible: false
+    }
+    */
+    function isPhoneLaunched()
+    {
+                    if(loaderSid.item instanceof Phoney )
+                    {
+                        return true
+                    }else{
+                        return false;
+                    }
+    }
+    function closeDrawer()
+    {
+                    drawer.close()
+                    drawer_open = false
     }
     Drawer {
         id: drawer
@@ -64,11 +80,11 @@ ApplicationWindow {
                 anchors.top: parent.top
                 text: "SunScreen"
                 onClicked: {
-                    phoney.visible = true
-                    phoney.stackPhoney.pop()
-                    phoney.stackPhoney.push("qrc:/SunScreen.qml")
-                    drawer.close()
-                    drawer_open = false
+                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    loaderSid.item.visible = true
+                    loaderSid.item.stackPhoney.pop()
+                    loaderSid.item.stackPhoney.push("qrc:/SunScreen.qml")
+                    closeDrawer();
                 }
             }
             ItemDelegate {
@@ -77,11 +93,12 @@ ApplicationWindow {
                 anchors.top: menu_item_0.bottom
                 text: qsTr("Page 1")
                 onClicked: {
-                    phoney.visible = true
-                    phoney.stackPhoney.pop()
-                    phoney.stackPhoney.push("qrc:/Page1Form.ui.qml")
-                    drawer.close()
-                    drawer_open = false
+                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    loaderSid.item.visible = true
+                    loaderSid.item.stackPhoney.pop()
+                    loaderSid.item.stackPhoney.push("qrc:/Page1Form.ui.qml")
+                    closeDrawer();
+
                 }
             }
             ItemDelegate {
@@ -90,11 +107,11 @@ ApplicationWindow {
                 anchors.top: menu_item_1.bottom
                 text: qsTr("Page 2")
                 onClicked: {
-                    phoney.visible = true
-                    phoney.stackPhoney.pop()
-                    phoney.stackPhoney.push("qrc:/Page2Form.ui.qml")
-                    drawer.close()
-                    drawer_open = false
+                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    loaderSid.item.visible = true
+                    loaderSid.item.stackPhoney.pop()
+                    loaderSid.item.stackPhoney.push("qrc:/Page2Form.ui.qml")
+                    closeDrawer();
                 }
             }
             ItemDelegate {
@@ -103,12 +120,12 @@ ApplicationWindow {
                 anchors.top: menu_item_2.bottom
                 text: qsTr("Days Alive")
                 onClicked: {
-                    phoney.visible = true
+                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    loaderSid.item.visible = true
                     console.log("pushing 'days of life' onto stackPhoney")
-                    phoney.stackPhoney.pop()
-                    phoney.stackPhoney.push("qrc:/DaysOfLife.qml")
-                    drawer.close()
-                    drawer_open = false
+                    loaderSid.item.stackPhoney.pop()
+                    loaderSid.item.stackPhoney.push("qrc:/DaysOfLife.qml")
+                    closeDrawer();
                 }
             }
         }
@@ -135,11 +152,15 @@ ApplicationWindow {
         onLoaded: {
             console.debug("loaderSid.onLoaded(): source: [", source, "]")
             if (source == "qrc:/Phoney.qml") {
-                phoney.visible = true
+                //phoney.visible = true
+                console.log("Booty");
+                console.log(Booty);
+                console.log("Phoney");
+                console.log(Phoney);
                 Booty.visible = false
                 console.log("phoney is visible")
             } else {
-                phoney.visible = false
+                //phoney.visible = false
                 console.log("phoney is NOT visible")
             }
         }
