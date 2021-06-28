@@ -12,4 +12,7 @@
         <file alias="qmldir">../sunnygui/forms/qmldir</file>
         <file alias="SunScreenForm.ui.qml">../sunnygui/forms/SunScreenForm.ui.qml</file>
     </qresource>
+    <qresource prefix="../imports/ui_art_assets">
+        <file alias="hamburg.svg">../sunnygui/imports/ui_art_assets/hamburg.svg</file>
+    </qresource>
 </RCC>
