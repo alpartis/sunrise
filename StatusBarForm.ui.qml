@@ -20,3 +20,9 @@ Rectangle {
         text: Qt.formatTime(new Date(), "h:mm AP")
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

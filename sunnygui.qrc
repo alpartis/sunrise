@@ -1,19 +1,19 @@
 <RCC>
     <qresource prefix="/imports/sunnygui">
-        <file>../sunnygui/imports/sunnygui/designer/plugin.metainfo</file>
-        <file alias="Constants.qml">../sunnygui/imports/sunnygui/Constants.qml</file>
-        <file alias="DirectoryFontLoader.qml">../sunnygui/imports/sunnygui/DirectoryFontLoader.qml</file>
-        <file alias="EventListModel.qml">../sunnygui/imports/sunnygui/EventListModel.qml</file>
-        <file alias="EventListSimulator.qml">../sunnygui/imports/sunnygui/EventListSimulator.qml</file>
-        <file alias="qmldir">../sunnygui/imports/sunnygui/qmldir</file>
-        <file alias="SunStyles.qml">../sunnygui/imports/sunnygui/SunStyles.qml</file>
+        <file alias="Constants.qml">imports/sunnygui/Constants.qml</file>
+        <file alias="DirectoryFontLoader.qml">imports/sunnygui/DirectoryFontLoader.qml</file>
+        <file alias="EventListModel.qml">imports/sunnygui/EventListModel.qml</file>
+        <file alias="EventListSimulator.qml">imports/sunnygui/EventListSimulator.qml</file>
+        <file alias="qmldir">imports/sunnygui/qmldir</file>
+        <file alias="SunStyles.qml">imports/sunnygui/SunStyles.qml</file>
     </qresource>
     <qresource prefix="/forms">
-        <file alias="qmldir">../sunnygui/forms/qmldir</file>
-        <file alias="SunScreenForm.ui.qml">../sunnygui/forms/SunScreenForm.ui.qml</file>
+        <file alias="qmldir">forms/qmldir</file>
+        <file alias="SunScreenForm.ui.qml">forms/SunScreenForm.ui.qml</file>
+        <file alias="DialKey.ui.qml">forms/DialKey.ui.qml</file>
     </qresource>
     <qresource prefix="/imports/ui_art_assets">
-        <file alias="qmldir">../sunnygui/imports/ui_art_assets/qmldir</file>
-        <file alias="hamburger.svg">../sunnygui/imports/ui_art_assets/hamburger.svg</file>
+        <file alias="qmldir">imports/ui_art_assets/qmldir</file>
+        <file alias="hamburger.svg">imports/ui_art_assets/hamburger.svg</file>
     </qresource>
 </RCC>

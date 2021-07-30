@@ -11,5 +11,6 @@
         <file>SunScreen.qml</file>
         <file>Booty.qml</file>
         <file>Phoney.qml</file>
+        <file>Dialpad.qml</file>
     </qresource>
 </RCC>

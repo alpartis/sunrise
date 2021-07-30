@@ -15,14 +15,13 @@ RESOURCES += \
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = .
-QML_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui
-QML_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui/imports
-QML_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui/imports/sunnygui
-QML_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui/imports/ui_art_assets
+QML_IMPORT_PATH += $$_PRO_FILE_PWD_/imports
+QML_IMPORT_PATH += $$_PRO_FILE_PWD_/imports/sunnygui
+QML_IMPORT_PATH += $$_PRO_FILE_PWD_/imports/ui_art_assets
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui/imports
-QML_DESIGNER_IMPORT_PATH += $$_PRO_FILE_PWD_/../sunnygui
+QML_DESIGNER_IMPORT_PATH += $$_PRO_FILE_PWD_/imports
+QML_DESIGNER_IMPORT_PATH += $$_PRO_FILE_PWD_/
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

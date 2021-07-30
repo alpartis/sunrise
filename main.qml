@@ -41,25 +41,24 @@ ApplicationWindow {
             }
         }
     }
+
+
     /*
     Phoney {
         id: phoney
         visible: false
     }
     */
-    function isPhoneLaunched()
-    {
-                    if(loaderSid.item instanceof Phoney )
-                    {
-                        return true
-                    }else{
-                        return false;
-                    }
+    function isPhoneLaunched() {
+        if (loaderSid.item instanceof Phoney) {
+            return true
+        } else {
+            return false
+        }
     }
-    function closeDrawer()
-    {
-                    drawer.close()
-                    drawer_open = false
+    function closeDrawer() {
+        drawer.close()
+        drawer_open = false
     }
     Drawer {
         id: drawer
@@ -75,16 +74,35 @@ ApplicationWindow {
         Column {
             width: parent.width
             ItemDelegate {
-                id: menu_item_0
+                id: menu_dialpad
                 width: parent.width
                 anchors.top: parent.top
+                text: "Dialpad"
+                onClicked: {
+                    if (!isPhoneLaunched()) {
+                        closeDrawer()
+                        return
+                    }
+                    loaderSid.item.visible = true
+                    loaderSid.item.stackPhoney.pop()
+                    loaderSid.item.stackPhoney.push("qrc:/Dialpad.qml")
+                    closeDrawer()
+                }
+            }
+            ItemDelegate {
+                id: menu_item_0
+                width: parent.width
+                anchors.top: menu_dialpad.bottom
                 text: "SunScreen"
                 onClicked: {
-                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    if (!isPhoneLaunched()) {
+                        closeDrawer()
+                        return
+                    }
                     loaderSid.item.visible = true
                     loaderSid.item.stackPhoney.pop()
                     loaderSid.item.stackPhoney.push("qrc:/SunScreen.qml")
-                    closeDrawer();
+                    closeDrawer()
                 }
             }
             ItemDelegate {
@@ -93,12 +111,14 @@ ApplicationWindow {
                 anchors.top: menu_item_0.bottom
                 text: qsTr("Page 1")
                 onClicked: {
-                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    if (!isPhoneLaunched()) {
+                        closeDrawer()
+                        return
+                    }
                     loaderSid.item.visible = true
                     loaderSid.item.stackPhoney.pop()
                     loaderSid.item.stackPhoney.push("qrc:/Page1Form.ui.qml")
-                    closeDrawer();
-
+                    closeDrawer()
                 }
             }
             ItemDelegate {
@@ -107,11 +127,14 @@ ApplicationWindow {
                 anchors.top: menu_item_1.bottom
                 text: qsTr("Page 2")
                 onClicked: {
-                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    if (!isPhoneLaunched()) {
+                        closeDrawer()
+                        return
+                    }
                     loaderSid.item.visible = true
                     loaderSid.item.stackPhoney.pop()
                     loaderSid.item.stackPhoney.push("qrc:/Page2Form.ui.qml")
-                    closeDrawer();
+                    closeDrawer()
                 }
             }
             ItemDelegate {
@@ -120,12 +143,15 @@ ApplicationWindow {
                 anchors.top: menu_item_2.bottom
                 text: qsTr("Days Alive")
                 onClicked: {
-                    if(!isPhoneLaunched()){closeDrawer(); return;}
+                    if (!isPhoneLaunched()) {
+                        closeDrawer()
+                        return
+                    }
                     loaderSid.item.visible = true
                     console.log("pushing 'days of life' onto stackPhoney")
                     loaderSid.item.stackPhoney.pop()
                     loaderSid.item.stackPhoney.push("qrc:/DaysOfLife.qml")
-                    closeDrawer();
+                    closeDrawer()
                 }
             }
         }
@@ -153,10 +179,10 @@ ApplicationWindow {
             console.debug("loaderSid.onLoaded(): source: [", source, "]")
             if (source == "qrc:/Phoney.qml") {
                 //phoney.visible = true
-                console.log("Booty");
-                console.log(Booty);
-                console.log("Phoney");
-                console.log(Phoney);
+                console.log("Booty")
+                console.log(Booty)
+                console.log("Phoney")
+                console.log(Phoney)
                 Booty.visible = false
                 console.log("phoney is visible")
             } else {
@@ -166,3 +192,10 @@ ApplicationWindow {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.25}
+}
+##^##*/
+

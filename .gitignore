@@ -29,6 +29,7 @@ Makefile*
 moc_*.cpp
 ui_*.h
 qrc_*.cpp
+*.qtds
 Thumbs.db
 *.res
 *.rc
@@ -38,6 +39,7 @@ out/
 
 # qtcreator generated files
 *.pro.user*
+*.user
 
 # xemacs temporary files
 *.flc
@@ -71,4 +73,3 @@ out/
 # --------
 *.dll
 *.exe
-
