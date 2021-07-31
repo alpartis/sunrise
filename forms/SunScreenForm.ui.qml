@@ -3,6 +3,7 @@ import sunnygui 1.0
 
 Rectangle {
     anchors.fill: parent
+    property alias hamburger_icon: hamburger_icon
     color: SunStyles.bluOysterCult
 
     Text {
@@ -16,7 +17,7 @@ Rectangle {
     }
 
     Image {
-        id: image
+        id: hamburger_icon
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: 8
