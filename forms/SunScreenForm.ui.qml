@@ -3,6 +3,7 @@ import sunnygui 1.0
 
 Rectangle {
     anchors.fill: parent
+    property alias clickbaitHamburger: clickbaitHamburger
     property alias hamburger_icon: hamburger_icon
     color: SunStyles.bluOysterCult
 
@@ -27,6 +28,10 @@ Rectangle {
         sourceSize.height: 19
         sourceSize.width: 24
         fillMode: Image.PreserveAspectFit
+        MouseArea {
+            id: clickbaitHamburger
+            anchors.fill: parent
+        }
     }
 }
 
