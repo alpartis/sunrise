@@ -5,14 +5,12 @@ import QtQuick.Controls.Material 2.12
 import sunnygui 1.0
 
 ApplicationWindow {
-    id: window
+    id: rootWindow
     width: 800
     height: 420
     visible: true
     color: "#000048"
     title: qsTr("Stack")
-
-    property bool drawer_open: false
 
     header: ToolBar {
         id: header
@@ -31,13 +29,7 @@ ApplicationWindow {
             hoverEnabled: false
             display: AbstractButton.TextOnly
             onClicked: {
-                if (drawer_open) {
-                    drawer.close()
-                    drawer_open = false
-                } else {
-                    drawer_open = true
-                    drawer.open()
-                }
+                toggleDrawer()
             }
         }
     }
@@ -56,15 +48,20 @@ ApplicationWindow {
             return false
         }
     }
+    function toggleDrawer() {
+        var open = (drawer.position > 0.0)
+        if (open) drawer.close()
+        else      drawer.open()
+    }
+
     function closeDrawer() {
         drawer.close()
-        drawer_open = false
     }
     Drawer {
         id: drawer
         y: toolButton.height
-        width: window.width * 0.30
-        height: window.height - y
+        width: rootWindow.width * 0.30
+        height: rootWindow.height - y
         edge: Qt.LeftEdge
 
         //        modal: false
@@ -161,8 +158,7 @@ ApplicationWindow {
             anchors.bottom: parent.bottom
             text: "Exit"
             onClicked: {
-                drawer_open = false
-                window.close()
+                rootWindow.close()
             }
         }
     }
