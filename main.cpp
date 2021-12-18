@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +10,9 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    QTranslator qtTranslator;
+    qtTranslator.load(":/i18n/strings_en_US", ".");
+    app.installTranslator(&qtTranslator);
 
     QQmlApplicationEngine engine;
     QString path = QGuiApplication::applicationDirPath();

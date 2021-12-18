@@ -13,6 +13,9 @@ RESOURCES += \
     qml.qrc \
     sunnygui.qrc
 
+TRANSLATIONS += \
+    i18n/strings.ts
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = .
 QML_IMPORT_PATH += $$_PRO_FILE_PWD_/forms
