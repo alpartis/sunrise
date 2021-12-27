@@ -9,7 +9,7 @@ Page {
 
     Image {
         anchors.fill: parent
-        source: "https://cdn.sangoma.com/wp-content/uploads/D80-sangoma-1-768x644.png"
+        source: "https://crumpcommunications.com/Sangoma/files/stacks-image-255055c-268x224.png"
         fillMode: Image.PreserveAspectFit
     }
 }

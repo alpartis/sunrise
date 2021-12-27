@@ -114,7 +114,7 @@ ApplicationWindow {
                     }
                     loaderSid.item.visible = true
                     loaderSid.item.stackPhoney.pop()
-                    loaderSid.item.stackPhoney.push("qrc:/Page1Form.ui.qml")
+                    loaderSid.item.stackPhoney.push("qrc:/Page1Form.qml")
                     closeDrawer()
                 }
             }
@@ -130,7 +130,7 @@ ApplicationWindow {
                     }
                     loaderSid.item.visible = true
                     loaderSid.item.stackPhoney.pop()
-                    loaderSid.item.stackPhoney.push("qrc:/Page2Form.ui.qml")
+                    loaderSid.item.stackPhoney.push("qrc:/Page2Form.qml")
                     closeDrawer()
                 }
             }
