@@ -12,7 +12,8 @@ Rectangle {
 
 
     Page {
-        property int days_alive: 55.5 * 365.25
+        id: days_page
+        property int days_alive: 56.2 * 365.25
 
         anchors.fill: parent
         title: qsTr("Days of Our Lives")
@@ -23,7 +24,7 @@ Rectangle {
             font.pointSize: 18
             anchors.centerIn: parent
             text: qsTr("I have been alive for %1 days").arg(
-                      Number(days_alive).toLocaleString())
+                      Number(days_page.days_alive).toLocaleString())
         }
     }
 }
