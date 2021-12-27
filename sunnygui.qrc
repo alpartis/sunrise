@@ -7,10 +7,6 @@
         <file alias="qmldir">imports/sunnygui/qmldir</file>
         <file alias="SunStyles.qml">imports/sunnygui/SunStyles.qml</file>
     </qresource>
-    <qresource prefix="/forms">
-        <file alias="qmldir">forms/qmldir</file>
-        <file alias="DialKey.ui.qml">forms/DialKey.ui.qml</file>
-    </qresource>
     <qresource prefix="/imports/ui_art_assets">
         <file alias="qmldir">imports/ui_art_assets/qmldir</file>
         <file alias="hamburger.svg">imports/ui_art_assets/hamburger.svg</file>

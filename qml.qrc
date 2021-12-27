@@ -9,6 +9,7 @@
         <file>SunScreen.qml</file>
         <file>Booty.qml</file>
         <file>Phoney.qml</file>
+        <file>DialKey.qml</file>
         <file>Dialpad.qml</file>
         <file>i18n/strings_en_US.qm</file>
         <file>ThreeCornerTouch.qml</file>
