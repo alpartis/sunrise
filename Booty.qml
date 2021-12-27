@@ -4,8 +4,6 @@ import sunnygui 1.0
 
 Item {
     id: booty
-    anchors.fill: parent
-    //    padding.bottom: 25
     Text {
         id: message
         x: parent.x + 8
@@ -26,26 +24,24 @@ Item {
         anchors {
             horizontalCenter: parent.horizontalCenter
             bottom: parent.bottom
-            margins: 25
+            margins: 5
         }
         text: "Phone Launcher"
         onClicked: loaderSid.source = "qrc:/Phoney.qml"
     }
 
-        ThreeCornerTouch{
-            anchors.fill: parent;
-            title:qsTr("Go to phone launcher")
-            testMode:false
-            message:qsTr("Do you want to go to the Phone Launcher?")
-            onAccepted: {
-                loaderSid.source = "qrc:/Phoney.qml"
-            }
+    ThreeCornerTouch{
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            bottom: phone_launcher.top
         }
+        title:qsTr("Go to phone launcher")
+        testMode:true
+        message:qsTr("Do you want to go to the Phone Launcher?")
+        onAccepted: {
+            loaderSid.source = "qrc:/Phoney.qml"
+        }
+    }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
-

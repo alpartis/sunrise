@@ -6,8 +6,8 @@ import sunnygui 1.0
 
 ApplicationWindow {
     id: rootWindow
-    width: 800
-    height: 420
+    width: 700
+    height: 360
     visible: true
     color: "#000048"
     title: qsTr("Stack")
@@ -73,7 +73,7 @@ ApplicationWindow {
             ItemDelegate {
                 id: menu_dialpad
                 width: parent.width
-                anchors.top: parent.top
+//                anchors.top: parent.top
                 text: "Dialpad"
                 onClicked: {
                     if (!isPhoneLaunched()) {
@@ -89,7 +89,7 @@ ApplicationWindow {
             ItemDelegate {
                 id: menu_item_0
                 width: parent.width
-                anchors.top: menu_dialpad.bottom
+//                anchors.top: menu_dialpad.bottom
                 text: "SunScreen"
                 onClicked: {
                     if (!isPhoneLaunched()) {
@@ -105,7 +105,7 @@ ApplicationWindow {
             ItemDelegate {
                 id: menu_item_1
                 width: parent.width
-                anchors.top: menu_item_0.bottom
+//                anchors.top: menu_item_0.bottom
                 text: qsTr("Page 1")
                 onClicked: {
                     if (!isPhoneLaunched()) {
@@ -121,7 +121,7 @@ ApplicationWindow {
             ItemDelegate {
                 id: menu_item_2
                 width: parent.width
-                anchors.top: menu_item_1.bottom
+//                anchors.top: menu_item_1.bottom
                 text: qsTr("Page 2")
                 onClicked: {
                     if (!isPhoneLaunched()) {
@@ -137,7 +137,7 @@ ApplicationWindow {
             ItemDelegate {
                 id: menu_item_3
                 width: parent.width
-                anchors.top: menu_item_2.bottom
+//                anchors.top: menu_item_2.bottom
                 text: qsTr("Days Alive")
                 onClicked: {
                     if (!isPhoneLaunched()) {
