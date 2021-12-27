@@ -6,7 +6,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>DaysOfLife.qml</file>
         <file>StatusBar.qml</file>
-        <file>StatusBarForm.ui.qml</file>
         <file>SunScreen.qml</file>
         <file>Booty.qml</file>
         <file>Phoney.qml</file>
