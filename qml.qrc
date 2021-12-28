@@ -13,5 +13,6 @@
         <file>Dialpad.qml</file>
         <file>i18n/strings_en_US.qm</file>
         <file>ThreeCornerTouch.qml</file>
+        <file>boot_logo.svg</file>
     </qresource>
 </RCC>

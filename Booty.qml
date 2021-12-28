@@ -38,7 +38,7 @@ Item {
             bottom: phone_launcher.top
         }
         title:qsTr("Go to phone launcher")
-        testMode:true
+        testMode:false
         message:qsTr("Do you want to go to the Phone Launcher?")
         onAccepted: {
             loaderSid.source = "qrc:/Phoney.qml"
