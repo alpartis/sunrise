@@ -14,7 +14,8 @@ RESOURCES += \
     sunnygui.qrc
 
 TRANSLATIONS += \
-    i18n/strings_en_US.ts
+    i18n/strings_en_US.ts \
+    i18n/strings_tr_TR.ts
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = .

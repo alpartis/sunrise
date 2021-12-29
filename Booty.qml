@@ -4,44 +4,51 @@ import sunnygui 1.0
 
 Item {
     id: booty
-    Text {
-        id: message
-        x: parent.x + 8
-        y: parent.height * .25
-        width: parent.width - 16
-        height: parent.height * .5
-        color: SunStyles.sunshineYellow
-        text: qsTrId("app_name")
-        font.pixelSize: height
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.bold: true
-        fontSizeMode: Text.Fit
-    }
-    Button {
-        id: phone_launcher
-        width: implicitWidth
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-            margins: 5
+    StartAnimation{
+        id:ani
+        x:0
+        y:0
+        anchors.fill : parent
+        startX:0
+        startY:0
+        duration:5000
+        onFinished: function(){
+            booty.state = "launcher"
         }
-        text: "Phone Launcher"
-        onClicked: loaderSid.source = "qrc:/Phoney.qml"
     }
 
-    ThreeCornerTouch{
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            bottom: phone_launcher.top
-        }
-        title:qsTr("Go to phone launcher")
-        testMode:false
-        message:qsTr("Do you want to go to the Phone Launcher?")
-        onAccepted: {
-            loaderSid.source = "qrc:/Phoney.qml"
-        }
+    BootyContent
+    {
+        id:content
+        color:"transparent"
     }
+
+    state:"animation"
+
+    states:[
+        State{
+            name:"animation"
+            PropertyChanges{
+                target:ani
+                visible:true
+            }
+            PropertyChanges{
+                target:content
+                visible:false
+            }
+        },
+        State{
+            name:"launcher"
+            PropertyChanges{
+                target:ani
+                visible:true
+            }
+            PropertyChanges{
+                target:content
+                visible:true
+            }
+        }
+    ]
+
+
 }

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.1" language="tr">
 <context>
-    <name>BootyContent</name>
+    <name>Booty</name>
     <message>
-        <location filename="../BootyContent.qml" line="14"/>
+        <location filename="../Booty.qml" line="14"/>
         <source>app_name</source>
-        <translation type="finished">App Name</translation>
+        <translation type="finished">SunRise Uygulaması</translation>
     </message>
     <message>
-        <location filename="../BootyContent.qml" line="40"/>
+        <location filename="../Booty.qml" line="40"/>
         <source>Go to phone launcher</source>
-        <translation type="finished">Go to phone launcher</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BootyContent.qml" line="42"/>
+        <location filename="../Booty.qml" line="42"/>
         <source>Do you want to go to the Phone Launcher?</source>
         <translation type="unfinished"></translation>
     </message>
