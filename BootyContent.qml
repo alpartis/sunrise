@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQml 2.12
 import QtQuick.Controls 2.12
 import sunnygui 1.0
 
@@ -9,7 +10,7 @@ Rectangle {
         x : parent.x + 8
         y : parent.height * .25
         width : parent.width - 16
-        height : parent.height * .5
+        height : parent.height * .3
         color : SunStyles.sunshineYellow
         text : qsTr("app_name")
         font.pixelSize : height
@@ -17,6 +18,14 @@ Rectangle {
         verticalAlignment : Text.AlignVCenter
         font.bold : true
         fontSizeMode : Text.Fit
+    }
+    BootProgressBar{
+        id:pb
+        anchors.top : message.bottom
+        width:parent.width * 0.3
+        height: parent.height * .2
+        anchors.horizontalCenter : parent.horizontalCenter
+        visible:false
     }
     Button {
         id : phone_launcher
@@ -27,7 +36,12 @@ Rectangle {
             margins : 5
         }
         text : "Phone Launcher"
-        onClicked : loaderSid.source = "qrc:/Phoney.qml"
+        onClicked : {
+            ProgressObj.startJob();
+            ProgressWriterObj.startJob();
+            pb.visible = true;
+            //loaderSid.source = "qrc:/Phoney.qml"
+            }
     }
 
     ThreeCornerTouch {
@@ -42,6 +56,18 @@ Rectangle {
         message : qsTr("Do you want to go to the Phone Launcher?")
         onAccepted : {
             loaderSid.source = "qrc:/Phoney.qml"
+        }
+    }
+
+    Connections {
+        target : ProgressObj
+        onCurrentChanged : function (new_value) {
+            console.log("new progress : " + new_value)
+            pb.message = "Loaded %"+ parseInt(new_value * 100);
+            if(new_value == 1.0)
+            {
+                loaderSid.source = "qrc:/Phoney.qml"
+            }
         }
     }
 }
