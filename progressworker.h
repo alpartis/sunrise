@@ -6,7 +6,7 @@
 #include <factory.h>
 #include "general.h"
 
-typedef struct progressState
+struct progressState
 {
     int total;
     int current;

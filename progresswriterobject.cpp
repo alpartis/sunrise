@@ -71,6 +71,7 @@ void ProgressWriterObject::prepareJob()
     workerThread.start();
 }
 
+
 ProgressWriterObject::~ProgressWriterObject()
 {
     emit this->endJob();

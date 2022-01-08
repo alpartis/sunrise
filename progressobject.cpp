@@ -46,7 +46,7 @@ void ProgressObject::setTotalStep(int total)
 
 void ProgressObject::startHandler()
 {
-    m_state = ProgressObjectState::started;
+    setStatus(Status::started);
 }
 
 void ProgressObject::finishHandler()
@@ -63,9 +63,21 @@ void ProgressObject::setCurrentStep(int current_step)
     emit currentStepChanged(m_step);
 }
 
+void ProgressObject::setStatus(Status st)
+{
+    if(st == m_status)
+    {
+        return;
+    }
+    m_status = st;
+
+    emit statusChanged(m_status);
+
+}
+
 bool ProgressObject::isFinished()
 {
-    if (m_state == ProgressObjectState::finished)
+    if (m_status == Status::finished)
     {
         return true;
     }
@@ -76,9 +88,14 @@ void ProgressObject::setFinish(bool yes)
 {
     if (yes && !isFinished())
     {
-        m_state = ProgressObjectState::finished;
+        setStatus(Status::finished);
         emit finished(m_fifo_name);
     }
+}
+
+Status ProgressObject::status()
+{
+    return m_status;
 }
 
 void ProgressObject::initJob(progress_handler handler, QString file_name)
@@ -110,10 +127,15 @@ void ProgressObject::prepareJob()
     workerThread.start();
 }
 
+QString ProgressObject::getFileName()
+{
+    return m_fifo_name;
+}
+
 ProgressObject::~ProgressObject()
 {
-    emit this->endJob();
-    // workerThread.quit();
+    this->endJob();
     workerThread.wait();
     qDebug() << "end of process" << endl;
 }
+

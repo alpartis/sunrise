@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQml 2.12
 import QtQuick.Controls 2.12
+import thundernet.general 1.0
 
 Item {
     anchors.topMargin : 10

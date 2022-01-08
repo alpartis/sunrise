@@ -19,13 +19,13 @@ Rectangle {
         font.bold : true
         fontSizeMode : Text.Fit
     }
-    BootProgressBar{
-        id:pb
+    BootProgressBar {
+        id : pb
         anchors.top : message.bottom
-        width:parent.width * 0.3
-        height: parent.height * .2
+        width : parent.width * 0.3
+        height : parent.height * .2
         anchors.horizontalCenter : parent.horizontalCenter
-        visible:false
+        visible : false
     }
     Button {
         id : phone_launcher
@@ -40,8 +40,8 @@ Rectangle {
             ProgressObj.startJob();
             ProgressWriterObj.startJob();
             pb.visible = true;
-            //loaderSid.source = "qrc:/Phoney.qml"
-            }
+            // loaderSid.source = "qrc:/Phoney.qml"
+        }
     }
 
     ThreeCornerTouch {
@@ -61,11 +61,13 @@ Rectangle {
 
     Connections {
         target : ProgressObj
+        onStatusChanged : function (new_status) {
+            console.log("New status : " + new_status);
+        }
         onCurrentChanged : function (new_value) {
             console.log("new progress : " + new_value)
-            pb.message = "Loaded %"+ parseInt(new_value * 100);
-            if(new_value == 1.0)
-            {
+            pb.message = "Loaded %" + parseInt(new_value * 100);
+            if (new_value == 1.0) {
                 loaderSid.source = "qrc:/Phoney.qml"
             }
         }

@@ -122,24 +122,28 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("ProgressObj", &prog_obj);
     engine.rootContext()->setContextProperty("ProgressWriterObj", &prog_writer_obj);
+    qRegisterMetaType<Status>("Status");
+    qmlRegisterUncreatableType<ProgressStatus>("thundernet.general", 1, 0, "Status", "Not creatable generic status enum");
 
     QObject::connect(
-        &engine, &QQmlApplicationEngine::objectCreated, &app, [url, &prog_obj, &prog_writer_obj](QObject *obj, const QUrl &objUrl)
-        {
-            if (!obj && (url == objUrl))
-                QCoreApplication::exit(-1);
-            //emit prog_obj.startJob();
-           // emit prog_writer_obj.startJob();
-    },
-        Qt::QueuedConnection);
+                &engine,
+                &QQmlApplicationEngine::objectCreated,
+                &app,
+                [url](QObject *obj, const QUrl &objUrl)
+                    {
+                        if (!obj && (url == objUrl))
+                        QCoreApplication::exit(-1);
+                    },
+                Qt::QueuedConnection
+                );
 
     engine.load(url);
 
     show_thread();
 
-    QObject::connect(&app, &QGuiApplication::aboutToQuit,[&prog_writer_obj,&prog_obj](){
+    QObject::connect(&app, &QGuiApplication::aboutToQuit,[&prog_obj](){
         if(prog_obj.isFinished()) return;
-        InterfaceNamedPipe * pipeWriter = Factory::createNamedPipeObject("fifo_pipe");
+        InterfaceNamedPipe * pipeWriter = Factory::createNamedPipeObject(prog_obj.getFileName());
         pipeWriter->pipeWrite("finished\n");
         delete pipeWriter;
 
