@@ -6,13 +6,12 @@
 #include <QThread>
 #include "general.h"
 
-
 class ProgressWriterObject : public QObject
 {
     Q_OBJECT
     float m_current = 0.0; // current progress percentage
-    int m_step = 0; // current step
-    int m_total_step = 0; // total step
+    int m_step = 0;        // current step
+    int m_total_step = 0;  // total step
     progress_writer_handler m_handler = nullptr;
     QString m_fifo_name;
     Q_PROPERTY(float current READ current WRITE setCurrent NOTIFY currentChanged)
@@ -28,6 +27,7 @@ public:
     void setTotalStep(int);
     void setCurrentStep(int);
     void initJob(progress_writer_handler handler, const QString file_name = "fifo_pipe");
+    void initJob(std::function<void(ProgressWriterObject *)> handler, const QString file_name = "fifo_pipe");
     Q_INVOKABLE void prepareJob();
 
 signals:

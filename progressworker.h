@@ -51,6 +51,10 @@ signals:
     void progressChanged(float);
     void currentStepChanged(int);
     void totalStepChanged(int);
+    void beforeBlock(QString file_name);
+    void afterBlock(QString file_name);
+    void finished();
+    void started();
 };
 
 #endif // PROGRESSWORKER_H

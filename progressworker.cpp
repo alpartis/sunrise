@@ -70,14 +70,17 @@ QString ProgressWorker::readPipe()
     }
 
     m_blocked = true;
-    QString result =  m_ptr_named_pipe->pipeRead();
+    emit beforeBlock(m_file_name);
+    // this will block the thread.
+    QString result = m_ptr_named_pipe->pipeRead();
+    emit afterBlock(m_file_name);
     m_blocked = false;
     return result;
 }
 
 void ProgressWorker::writePipe(const QString content)
 {
-    if(!isPipeExist())
+    if (!isPipeExist())
     {
         return;
     }
@@ -98,6 +101,7 @@ bool ProgressWorker::deletePipe()
 
 void ProgressWorker::startJob()
 {
+    emit started();
     set_thread_name(m_file_name + " thread");
 
     if (m_handler == nullptr)
@@ -107,20 +111,20 @@ void ProgressWorker::startJob()
     m_handler(this);
 }
 
-progressState ProgressWorker::parseForProgress(const QString & message )
+progressState ProgressWorker::parseForProgress(const QString &message)
 {
     progressState progress_state;
     QRegularExpression re("^Step (\\d+) of (\\d+)$");
     QRegularExpressionMatch match = re.match(message);
     bool hasMatch = match.hasMatch(); // true
-    if(!hasMatch)
+    if (!hasMatch)
     {
         progress_state.match = false;
         return progress_state;
     }
     progress_state.current = match.captured(1).toInt();
     progress_state.total = match.captured(2).toInt();
-    if(progress_state.total == 0 )
+    if (progress_state.total == 0)
     {
         progress_state.match = false;
         return progress_state;
@@ -136,8 +140,16 @@ bool ProgressWorker::isFinishing()
 
 void ProgressWorker::endJob()
 {
-    qDebug()<<"ending job"<<endl;
+    qDebug() << "ending job" << endl;
     m_finishing = true;
     deletePipe();
+
+    if (m_ptr_named_pipe != nullptr)
+    {
+        delete m_ptr_named_pipe;
+        m_ptr_named_pipe = nullptr;
+    }
+
     QThread::currentThread()->quit();
+    emit finished();
 }

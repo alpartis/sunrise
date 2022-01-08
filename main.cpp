@@ -12,6 +12,7 @@
 #include "general.h"
 #include <QTimer>
 
+
 void named_pipe_progress_handler(ProgressWorker *ptr_pw)
 {
     show_thread();
@@ -135,6 +136,14 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     show_thread();
+
+    QObject::connect(&app, &QGuiApplication::aboutToQuit,[&prog_writer_obj,&prog_obj](){
+        if(prog_obj.isFinished()) return;
+        InterfaceNamedPipe * pipeWriter = Factory::createNamedPipeObject("fifo_pipe");
+        pipeWriter->pipeWrite("finished\n");
+        delete pipeWriter;
+
+    } );
 
     return app.exec();
 }

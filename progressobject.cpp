@@ -44,6 +44,16 @@ void ProgressObject::setTotalStep(int total)
     emit totalStepChanged(total);
 }
 
+void ProgressObject::startHandler()
+{
+    m_state = ProgressObjectState::started;
+}
+
+void ProgressObject::finishHandler()
+{
+    setFinish(true);
+}
+
 void ProgressObject::setCurrentStep(int current_step)
 {
     if (m_step == current_step)
@@ -51,6 +61,24 @@ void ProgressObject::setCurrentStep(int current_step)
 
     m_step = current_step;
     emit currentStepChanged(m_step);
+}
+
+bool ProgressObject::isFinished()
+{
+    if (m_state == ProgressObjectState::finished)
+    {
+        return true;
+    }
+    return false;
+}
+
+void ProgressObject::setFinish(bool yes)
+{
+    if (yes && !isFinished())
+    {
+        m_state = ProgressObjectState::finished;
+        emit finished(m_fifo_name);
+    }
 }
 
 void ProgressObject::initJob(progress_handler handler, QString file_name)
@@ -74,6 +102,8 @@ void ProgressObject::prepareJob()
     connect(worker, &ProgressWorker::progressChanged, this, &ProgressObject::setCurrent);
     connect(worker, &ProgressWorker::currentStepChanged, this, &ProgressObject::setCurrentStep);
     connect(worker, &ProgressWorker::totalStepChanged, this, &ProgressObject::setTotalStep);
+    connect(worker, &ProgressWorker::started, this, &ProgressObject::startHandler);
+    connect(worker, &ProgressWorker::finished, this, &ProgressObject::finishHandler);
     connect(this, &ProgressObject::startJob, worker, &ProgressWorker::startJob);
     connect(this, &ProgressObject::endJob, worker, &ProgressWorker::endJob);
 

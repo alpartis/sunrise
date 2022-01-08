@@ -43,6 +43,11 @@ void ProgressWriterObject::initJob(progress_writer_handler handler, QString file
     m_fifo_name = file_name;
 }
 
+void ProgressWriterObject::initJob(std::function<void (ProgressWriterObject *)> handler, const QString file_name)
+{
+    //@todo : Not implemented yet!
+}
+
 void ProgressWriterObject::prepareJob()
 {
     ProgressWriterWorker *worker = new ProgressWriterWorker;
