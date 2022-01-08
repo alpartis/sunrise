@@ -12,6 +12,8 @@
 #include "general.h"
 #include <QTimer>
 
+QObject * booty_bp_invoke = nullptr;
+
 
 void named_pipe_progress_handler(ProgressWorker *ptr_pw)
 {
@@ -54,6 +56,12 @@ void named_pipe_progress_handler(ProgressWorker *ptr_pw)
 
             ptr_pw->m_progress = state.progress;
             emit ptr_pw->progressChanged(state.progress);
+            //Direct call and set
+            if(booty_bp_invoke != nullptr)
+            {
+                booty_bp_invoke->setProperty("value",state.progress);
+                QMetaObject::invokeMethod(booty_bp_invoke,"invokeExample",Qt::QueuedConnection,Q_ARG(QVariant,(state.progress + 0.25)));
+            }
         }
     }
     qDebug() << "read content from named piped file: " << line << endl;
@@ -133,6 +141,11 @@ int main(int argc, char *argv[])
                     {
                         if (!obj && (url == objUrl))
                         QCoreApplication::exit(-1);
+                        if(url == objUrl)
+                        {
+                            booty_bp_invoke = obj->findChild<QObject*>("booty_pb_invoke");
+                        }
+
                     },
                 Qt::QueuedConnection
                 );

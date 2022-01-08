@@ -4,55 +4,54 @@ import QtQuick.Controls 2.12
 import sunnygui 1.0
 
 Rectangle {
+    id: root
     anchors.fill : parent
-    Text {
-        id : message
-        x : parent.x + 8
-        y : parent.height * .25
-        width : parent.width - 16
-        height : parent.height * .3
-        color : SunStyles.sunshineYellow
-        text : qsTr("app_name")
-        font.pixelSize : height
-        horizontalAlignment : Text.AlignHCenter
-        verticalAlignment : Text.AlignVCenter
-        font.bold : true
-        fontSizeMode : Text.Fit
-    }
-    BootProgressBar {
-        id : pb
-        anchors.top : message.bottom
-        width : parent.width * 0.3
-        height : parent.height * .2
-        anchors.horizontalCenter : parent.horizontalCenter
-        visible : false
-    }
-    Button {
-        id : phone_launcher
-        width : implicitWidth
-        anchors {
-            horizontalCenter : parent.horizontalCenter
-            bottom : parent.bottom
-            margins : 5
+    color: "green"
+    Column {
+        width: root.width
+        height: root.height
+        Text {
+            id : message
+            x : parent.x + 8
+            width : parent.width - 16
+            height : root.height * .3
+            color : SunStyles.sunshineYellow
+            text : qsTr("app_name")
+            font.pixelSize : height
+            horizontalAlignment : Text.AlignHCenter
+            verticalAlignment : Text.AlignVCenter
+            font.bold : true
+            fontSizeMode : Text.Fit
         }
-        text : "Phone Launcher"
-        onClicked : {
-            ProgressObj.startJob();
-            ProgressWriterObj.startJob();
-            pb.visible = true;
-            // loaderSid.source = "qrc:/Phoney.qml"
+        BootProgressBar {
+            id : pb
+            width : parent.width * 0.4
+            height : root.height * .3
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Item {
+            width : parent.width
+            height : root.height * 0.3
+            Button {
+                id : phone_launcher
+                width : implicitWidth
+                text : "Phone Launcher"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                onClicked : {
+                    ProgressObj.startJob();
+                    ProgressWriterObj.startJob();
+                    pb.visible = true;
+                    phone_launcher.enabled = false;
+                    // loaderSid.source = "qrc:/Phoney.qml"
+                }
+            }
         }
     }
 
     ThreeCornerTouch {
-        anchors {
-            top : parent.top
-            left : parent.left
-            right : parent.right
-            bottom : phone_launcher.top
-        }
         title : qsTr("Go to phone launcher")
-        testMode : false
+        testMode : true
         message : qsTr("Do you want to go to the Phone Launcher?")
         onAccepted : {
             loaderSid.source = "qrc:/Phoney.qml"
