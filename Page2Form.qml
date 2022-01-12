@@ -13,6 +13,8 @@ Page {
         anchors.bottomMargin: 16
         anchors.horizontalCenter: parent.horizontalCenter
     }
+
+    // TODO: this ListModel should be removed as part of github issue #5
     ListModel {
         id: list_of_favorite_girls
         ListElement {
@@ -47,5 +49,10 @@ Page {
         }
         model: list_of_favorite_girls
         delegate: girlLayout
+    }
+
+    Component.onCompleted: {
+        // TODO: add code here to call a simple C++ function that provides
+        //  the data for the ListView.
     }
 }
