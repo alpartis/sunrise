@@ -5,8 +5,6 @@
 #include <progressworker.h>
 #include <progressobject.h>
 
-#include <progresswriterworker.h>
-#include <progresswriterobject.h>
 
 #include <QQmlContext>
 #include "general.h"
@@ -63,42 +61,13 @@ void named_pipe_progress_handler(ProgressWorker *ptr_pw)
                 QMetaObject::invokeMethod(booty_bp_invoke,"invokeExample",Qt::QueuedConnection,Q_ARG(QVariant,(state.progress + 0.25)));
             }
         }
+        if(ptr_pw->m_progress >= 1.0)
+        {
+            emit ptr_pw->finished();
+        }
     }
     qDebug() << "read content from named piped file: " << line << endl;
     QTimer::singleShot(1000, ptr_pw, &ProgressWorker::startJob);
-}
-
-void named_pipe_progress_writer_handler(ProgressWriterWorker *ptr_pw)
-{
-    show_thread();
-    int step = ptr_pw->m_current;
-    int total_step = ptr_pw->m_total_step;
-
-    if (!ptr_pw->isPipeExist())
-    {
-        if (!ptr_pw->isFinishing())
-        {
-            // not possible to write. Wait for fifo pipe readiness.
-            QTimer::singleShot(1000, ptr_pw, &ProgressWriterWorker::nextStep);
-            return;
-        }
-        // nothing to do. Thread is finishing.
-        return;
-    }
-
-    if (step > total_step || ptr_pw->isFinishing())
-    {
-        ptr_pw->writePipe("finished\n");
-        ptr_pw->endJob();
-        return;
-    }
-
-    QString line = QString("Step %1 of 10\n").arg(step);
-    ptr_pw->writePipe(line);
-    QThread::sleep(5);
-    qDebug() << "Piped file content writed: " << line << endl;
-    ptr_pw->m_current++;
-    QTimer::singleShot(1000, ptr_pw, &ProgressWriterWorker::nextStep);
 }
 
 int main(int argc, char *argv[])
@@ -121,15 +90,11 @@ int main(int argc, char *argv[])
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 
     ProgressObject prog_obj;
-    ProgressWriterObject prog_writer_obj;
     prog_obj.initJob(named_pipe_progress_handler, "fifo_pipe");
     prog_obj.prepareJob();
 
-    prog_writer_obj.initJob(named_pipe_progress_writer_handler, "fifo_pipe");
-    prog_writer_obj.prepareJob();
-
     engine.rootContext()->setContextProperty("ProgressObj", &prog_obj);
-    engine.rootContext()->setContextProperty("ProgressWriterObj", &prog_writer_obj);
+
     qRegisterMetaType<Status>("Status");
     qmlRegisterUncreatableType<ProgressStatus>("thundernet.general", 1, 0, "Status", "Not creatable generic status enum");
 
@@ -137,13 +102,16 @@ int main(int argc, char *argv[])
                 &engine,
                 &QQmlApplicationEngine::objectCreated,
                 &app,
-                [url](QObject *obj, const QUrl &objUrl)
+                [url,&prog_obj](QObject *obj, const QUrl &objUrl)
                     {
                         if (!obj && (url == objUrl))
                         QCoreApplication::exit(-1);
                         if(url == objUrl)
                         {
                             booty_bp_invoke = obj->findChild<QObject*>("booty_pb_invoke");
+                            //Starting reading FIFO
+                            prog_obj.startJob();
+                            
                         }
 
                     },

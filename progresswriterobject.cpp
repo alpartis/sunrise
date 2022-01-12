@@ -60,9 +60,6 @@ void ProgressWriterObject::prepareJob()
 
     worker->moveToThread(&workerThread);
 
-    connect(worker, &ProgressWriterWorker::progressChanged, this, &ProgressWriterObject::setCurrent);
-    connect(worker, &ProgressWriterWorker::currentStepChanged, this, &ProgressWriterObject::setCurrentStep);
-    connect(worker, &ProgressWriterWorker::totalStepChanged, this, &ProgressWriterObject::setTotalStep);
     connect(this, &ProgressWriterObject::startJob, worker, &ProgressWriterWorker::startJob);
     connect(this, &ProgressWriterObject::endJob, worker, &ProgressWriterWorker::endJob);
     //connect(worker,&ProgressWriterObject::jobEnded, this, &ProgressWriterObject:jobEndHandler );

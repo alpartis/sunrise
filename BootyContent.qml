@@ -39,11 +39,10 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 onClicked : {
-                    ProgressObj.startJob();
-                    ProgressWriterObj.startJob();
+                    ProgressObj.endJob();
                     pb.visible = true;
                     phone_launcher.enabled = false;
-                    // loaderSid.source = "qrc:/Phoney.qml"
+                    loaderSid.source = "qrc:/Phoney.qml"
                 }
             }
         }

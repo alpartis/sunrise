@@ -6,6 +6,19 @@
 #include <QThread>
 #include "general.h"
 
+/**
+ * brief :
+ * This class created to connect a ProgressWriterObject in a separate thread into the main QML.
+ * ProgressWriterObject uses for creating and controlling a ProgressWriterWorker object.
+ * It creates a ProgressWriterWorker object and moves it into to new thread and listens signals of the ProgressWriterWorker object.
+ * Then when the progress values is changed, it automatically changes QML object with new values. 
+ * 
+ * 
+ * architecture:
+ * This is a controller class for creating, connecting to a worker thread.
+ * @link: https://doc.qt.io/qt-5/qthread.html
+ */
+
 class ProgressWriterObject : public QObject
 {
     Q_OBJECT
@@ -14,9 +27,6 @@ class ProgressWriterObject : public QObject
     int m_total_step = 0;  // total step
     progress_writer_handler m_handler = nullptr;
     QString m_fifo_name;
-    Q_PROPERTY(float current READ current WRITE setCurrent NOTIFY currentChanged)
-    Q_PROPERTY(int currentStep READ currentStep WRITE setCurrentStep NOTIFY currentStepChanged)
-    Q_PROPERTY(int totalStep READ totalStep WRITE setTotalStep NOTIFY totalStepChanged)
 public:
     explicit ProgressWriterObject(QObject *parent = nullptr);
     ~ProgressWriterObject();
@@ -31,7 +41,6 @@ public:
     Q_INVOKABLE void prepareJob();
 
 signals:
-    void currentChanged(float);
     void currentStepChanged(int);
     void totalStepChanged(int);
     Q_INVOKABLE void startJob();

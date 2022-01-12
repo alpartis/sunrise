@@ -6,6 +6,10 @@
 #include <QThread>
 #include "general.h"
 
+/**
+ * brief :
+ * ProgressStatus enum Qt Class created for QML environment.
+ */
 class ProgressStatus
 {
     Q_GADGET
@@ -15,16 +19,23 @@ public:
 
     enum class Value
     {
-        not_initialized,
-        initialized,
-        started,
-        finished,
-        blocked
+        not_initialized, //Before any settings
+        initialized, //Settings ok, but not a progress reading is not started
+        started, //A progress reading started
+        finished, //A progress finished
+        blocked // A progress reading started and reading thread is blocked for a new text message
     };
     Q_ENUM(Value)
 };
 
 typedef ProgressStatus::Value Status;
+/**
+ * brief :
+ * ProgressObject used for creating and controlling a ProgressWorker object.
+ * It creates a ProgressWorker object and moves it into to new thread and listens signals of the ProgressWorker object.
+ * Then when the progress values is changed, it automatically changes QML object with new values. 
+ * 
+ */
 class ProgressObject : public QObject
 {
     Q_OBJECT
@@ -54,7 +65,9 @@ public:
     void setCurrentStep(int);
     void setStatus(Status st);
     QString getFileName();
+    /* need for initialization for the job. progress_handler and m_fifo_name should be set before starting the job */
     void initJob(progress_handler handler, const QString file_name = "fifo_pipe");
+    /* this method for creating a thread and worker object. It should be called after the initJob */
     Q_INVOKABLE void prepareJob();
 public slots:
     void startHandler();
@@ -67,7 +80,9 @@ signals:
     void finished(QString file_name);
     void started(QString file_name);
     void statusChanged(Status);
+    //invoke the startJob method to start the ProgressWorker Object that conected in the preparJob
     Q_INVOKABLE void startJob();
+    //invoke the endJob method to stop the ProgressWorker Object 
     Q_INVOKABLE void endJob();
     void jobDone(const QString result);
 

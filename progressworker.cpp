@@ -78,15 +78,6 @@ QString ProgressWorker::readPipe()
     return result;
 }
 
-void ProgressWorker::writePipe(const QString content)
-{
-    if (!isPipeExist())
-    {
-        return;
-    }
-
-    m_ptr_named_pipe->pipeWrite(content);
-}
 
 bool ProgressWorker::deletePipe()
 {

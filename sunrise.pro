@@ -12,9 +12,7 @@ SOURCES += \
         linuxnamedpipe.cpp \
         main.cpp \
         progressobject.cpp \
-        progressworker.cpp \
-        progresswriterobject.cpp \
-        progresswriterworker.cpp
+        progressworker.cpp
 
 RESOURCES += \
     qml.qrc \
@@ -46,6 +44,4 @@ HEADERS += \
     interfacenamedpipe.h \
     linuxnamedpipe.h \
     progressobject.h \
-    progressworker.h \
-    progresswriterobject.h \
-    progresswriterworker.h
+    progressworker.h
