@@ -27,7 +27,28 @@ Rectangle {
             margins : 5
         }
         text : "Phone Launcher"
-        onClicked : loaderSid.source = "qrc:/Phoney.qml"
+        onClicked : loaderSid.source = "qrc://Phoney.qml";
+    }
+
+    Dialog {
+        id: dialog
+        modal: true
+        title: qsTr("Phone Launch?")
+        standardButtons: Dialog.Yes|Dialog.No
+        anchors.centerIn: parent
+        Label {
+            text: qsTr("Are you sure you want to launch the phone?")
+        }   visible:false
+
+        onAccepted:{
+            launchPhone();
+        }
+    }
+
+    function launchPhone()
+    {
+        console.log("Phoney is loaded");
+        loaderSid.source = "qrc://Phoney.qml"
     }
 
     ThreeCornerTouch {
