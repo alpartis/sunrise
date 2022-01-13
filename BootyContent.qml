@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import sunnygui 1.0
 
 Rectangle {
+    id: root
     anchors.fill : parent
     Text {
         id : message
@@ -27,11 +28,13 @@ Rectangle {
             margins : 5
         }
         text : "Phone Launcher"
-        onClicked : loaderSid.source = "qrc://Phoney.qml";
+        onClicked : {
+            cdialog.open();
+        }
     }
 
     Dialog {
-        id: dialog
+        id: cdialog
         modal: true
         title: qsTr("Phone Launch?")
         standardButtons: Dialog.Yes|Dialog.No
@@ -41,14 +44,15 @@ Rectangle {
         }   visible:false
 
         onAccepted:{
-            launchPhone();
+            root.launchPhone();
         }
     }
 
     function launchPhone()
     {
         console.log("Phoney is loaded");
-        loaderSid.source = "qrc://Phoney.qml"
+        loaderSid.source = "qrc:/Phoney.qml"
+        sdialog.visible = false;
     }
 
     ThreeCornerTouch {
