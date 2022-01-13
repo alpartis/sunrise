@@ -122,7 +122,7 @@ ApplicationWindow {
                 id: menu_item_2
                 width: parent.width
 //                anchors.top: menu_item_1.bottom
-                text: qsTr("Page 2")
+                text: qsTr("Favorite Girls")
                 onClicked: {
                     if (!isPhoneLaunched()) {
                         closeDrawer()

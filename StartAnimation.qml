@@ -5,7 +5,7 @@ import sunnygui 1.0
 Rectangle {
     id : root
     anchors.fill : parent
-    color : "black"
+    color : SunStyles.bluOysterCult
     property int startWidth : 266
     property int startHeight : 66
     property int endWidth : startWidth * 2
