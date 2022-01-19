@@ -16,7 +16,7 @@ Rectangle {
             width : parent.width - 16
             height : root.height * .3
             color : SunStyles.sunshineYellow
-            text : qsTr("app_name")
+            text : qsTrId("app_name")
             font.pixelSize : height
             horizontalAlignment : Text.AlignHCenter
             verticalAlignment : Text.AlignVCenter

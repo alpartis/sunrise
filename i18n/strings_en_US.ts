@@ -3,10 +3,10 @@
 <TS version="2.1" language="en">
 <context>
     <name>BootyContent</name>
-    <message>
+    <message id="app_name">
         <location filename="../BootyContent.qml" line="14"/>
         <source>app_name</source>
-        <translation type="finished">App Name</translation>
+        <translation type="finished">sunrise boot</translation>
     </message>
     <message>
         <location filename="../BootyContent.qml" line="40"/>
