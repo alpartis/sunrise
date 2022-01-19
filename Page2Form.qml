@@ -14,18 +14,6 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    // TODO: this ListModel should be removed as part of github issue #5
-    ListModel {
-        id: list_of_favorite_girls
-        ListElement {
-            first_name: "Amy"
-            last_name: "Bredwell"
-        }
-        ListElement {
-            first_name: "Ruby"
-            last_name: "Sherwood"
-        }
-    }
     Component {
         id: girlLayout
         Item {
@@ -34,7 +22,7 @@ Page {
                 anchors.fill: parent
                 color: "#ffc0c0"
                 horizontalAlignment: Text.AlignHCenter
-                text: "<b>" + first_name + "</b>" + last_name
+                text: "<b>" + first_name + "</b> " + last_name
             }
         }
     }

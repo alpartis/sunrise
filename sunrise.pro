@@ -11,6 +11,7 @@ SOURCES += \
         general.cpp \
         linuxnamedpipe.cpp \
         main.cpp \
+        models/favoritegirlmodel.cpp \
         progressobject.cpp \
         progressworker.cpp
 
@@ -43,5 +44,6 @@ HEADERS += \
     factory.h \
     interfacenamedpipe.h \
     linuxnamedpipe.h \
+    models/favoritegirlmodel.h \
     progressobject.h \
     progressworker.h
