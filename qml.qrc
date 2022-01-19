@@ -16,5 +16,6 @@
         <file>ThreeCornerTouch.qml</file>
         <file>StartAnimation.qml</file>
         <file>boot_logo.svg</file>
+        <file>BootProgressBar.qml</file>
     </qresource>
 </RCC>
