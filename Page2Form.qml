@@ -27,6 +27,19 @@ Page {
         }
     }
 
+    ListModel {
+        id: list_of_favorite_girls
+        function loadData(data)
+        {
+            this.clear();
+            for(var item in data)
+            {
+                this.append(data[item]);
+            }
+        }
+    }
+
+
     ListView {
         id: girls_list
         width: parent.width
@@ -40,7 +53,8 @@ Page {
     }
 
     Component.onCompleted: {
-        // TODO: add code here to call a simple C++ function that provides
-        //  the data for the ListView.
+        var data = qbridge.getGirlsList();
+        list_of_favorite_girls.loadData(data);
+
     }
 }

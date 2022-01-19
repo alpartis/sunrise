@@ -7,11 +7,12 @@ CONFIG += c++14
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        bridge/girls.cpp \
+        bridge/qbridge.cpp \
         factory.cpp \
         general.cpp \
         linuxnamedpipe.cpp \
         main.cpp \
-        models/favoritegirlmodel.cpp \
         progressobject.cpp \
         progressworker.cpp
 
@@ -41,9 +42,10 @@ else: unix:!android: target.path = bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    bridge/girls.h \
+    bridge/qbridge.h \
     factory.h \
     interfacenamedpipe.h \
     linuxnamedpipe.h \
-    models/favoritegirlmodel.h \
     progressobject.h \
     progressworker.h

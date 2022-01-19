@@ -9,7 +9,10 @@
 #include <QQmlContext>
 #include "general.h"
 #include <QTimer>
-#include <models/favoritegirlmodel.h>
+#include <bridge/qbridge.h>
+#include <vector>
+
+
 
 QObject * booty_bp_invoke = nullptr;
 
@@ -94,12 +97,10 @@ int main(int argc, char *argv[])
     prog_obj.initJob(named_pipe_progress_handler, "fifo_pipe");
     prog_obj.prepareJob();
 
-    // Model C++ to qml connection
-    FavoriteGirlModel fg_model;
-    fg_model.addFavoriteGirl(FavoriteGirl("Amy","Bredwell"));
-    fg_model.addFavoriteGirl(FavoriteGirl("Ruby","Sherwood"));
-    engine.rootContext()->setContextProperty("list_of_favorite_girls", QVariant::fromValue(&fg_model));
-    // End of Model C++ to qml connection
+    // Bridge C++ to qml connection
+    QBridge qbridge;
+    engine.rootContext()->setContextProperty("qbridge", &qbridge);
+    // End of Bridge C++ to qml connection
 
 
     engine.rootContext()->setContextProperty("ProgressObj", &prog_obj);
