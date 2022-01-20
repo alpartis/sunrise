@@ -12,15 +12,17 @@ QBridge::QBridge(QObject *parent)
 
 const QVariant QBridge::getGirlsList()
 {
-    QList<QObject *> datalist;
     const int limit = int(girls.size());
+    m_girllist.clear();
     for(int i=0; i<limit; i++)
     {
         const QString & first_name = QString::fromStdString(girls[i].first_name);
         const QString & last_name = QString::fromStdString(girls[i].last_name);
-        QObject * item = new DataObject(first_name,last_name);
-        datalist.append(item);
+        QMap<QString,QString> item;
+        item.insert("first_name",first_name);
+        item.insert("last_name",last_name);
+        m_girllist.append(item);
     }
 
-    return QVariant::fromValue(datalist);
+    return QVariant::fromValue(m_girllist);
 }

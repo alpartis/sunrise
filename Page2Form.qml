@@ -31,10 +31,12 @@ Page {
         id: list_of_favorite_girls
         function loadData(data)
         {
-            this.clear();
-            for(var item in data)
+            list_of_favorite_girls.clear();
+            for(var i in data)
             {
-                this.append(data[item]);
+                var item = data[i];
+                console.log(item);
+                list_of_favorite_girls.append(item);
             }
         }
     }
