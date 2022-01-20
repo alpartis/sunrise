@@ -12,15 +12,16 @@ QBridge::QBridge(QObject *parent)
 
 const QVariant QBridge::getGirlsList()
 {
+    m_girllist.clear();
     const int limit = int(girls.size());
     m_girllist.clear();
     for(int i=0; i<limit; i++)
     {
         const QString & first_name = QString::fromStdString(girls[i].first_name);
         const QString & last_name = QString::fromStdString(girls[i].last_name);
-        QMap<QString,QString> item;
-        item.insert("first_name",first_name);
-        item.insert("last_name",last_name);
+        QQmlPropertyMap * item = new QQmlPropertyMap();
+        item->insert("first_name",first_name);
+        item->insert("last_name",last_name);
         m_girllist.append(item);
     }
 

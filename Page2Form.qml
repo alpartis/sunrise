@@ -35,7 +35,6 @@ Page {
             for(var i in data)
             {
                 var item = data[i];
-                console.log(item);
                 list_of_favorite_girls.append(item);
             }
         }
@@ -57,6 +56,5 @@ Page {
     Component.onCompleted: {
         var data = qbridge.getGirlsList();
         list_of_favorite_girls.loadData(data);
-
     }
 }

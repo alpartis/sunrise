@@ -6,13 +6,14 @@
 #include "girls.h"
 #include <QMap>
 #include <QList>
+#include <QQmlPropertyMap>
 
 
 
 class QBridge : public QObject
 {
     Q_OBJECT
-    QList<QMap<QString,QString>> m_girllist;
+    QList<QQmlPropertyMap*> m_girllist;
 public:
     explicit QBridge(QObject *parent = nullptr);
 public slots:
