@@ -7,17 +7,18 @@
 #include <QMap>
 #include <QList>
 #include <QQmlPropertyMap>
+#include <QVariantMap>
+#include <QVariantList>
 
 
 
 class QBridge : public QObject
 {
     Q_OBJECT
-    QList<QQmlPropertyMap*> m_girllist;
 public:
     explicit QBridge(QObject *parent = nullptr);
 public slots:
-    Q_INVOKABLE const QVariant getGirlsList();
+    const QVariant getGirlsList();
 };
 
 #endif // QBRIDGE_H
