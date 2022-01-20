@@ -9,6 +9,10 @@
 #include <QQmlContext>
 #include "general.h"
 #include <QTimer>
+#include <bridge/qbridge.h>
+#include <vector>
+
+
 
 QObject * booty_bp_invoke = nullptr;
 
@@ -93,8 +97,13 @@ int main(int argc, char *argv[])
     prog_obj.initJob(named_pipe_progress_handler, "fifo_pipe");
     prog_obj.prepareJob();
 
-    engine.rootContext()->setContextProperty("ProgressObj", &prog_obj);
+    // Bridge C++ to qml connection
+    QBridge qbridge;
+    engine.rootContext()->setContextProperty("qbridge", &qbridge);
+    // End of Bridge C++ to qml connection
 
+
+    engine.rootContext()->setContextProperty("ProgressObj", &prog_obj);
     qRegisterMetaType<Status>("Status");
     qmlRegisterUncreatableType<ProgressStatus>("thundernet.general", 1, 0, "Status", "Not creatable generic status enum");
 

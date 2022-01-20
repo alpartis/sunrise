@@ -14,18 +14,6 @@ Page {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    // TODO: this ListModel should be removed as part of github issue #5
-    ListModel {
-        id: list_of_favorite_girls
-        ListElement {
-            first_name: "Amy"
-            last_name: "Bredwell"
-        }
-        ListElement {
-            first_name: "Ruby"
-            last_name: "Sherwood"
-        }
-    }
     Component {
         id: girlLayout
         Item {
@@ -34,10 +22,24 @@ Page {
                 anchors.fill: parent
                 color: "#ffc0c0"
                 horizontalAlignment: Text.AlignHCenter
-                text: "<b>" + first_name + "</b>" + last_name
+                text: "<b>" + first_name + "</b> " + last_name
             }
         }
     }
+
+    ListModel {
+        id: list_of_favorite_girls
+        function loadData(data)
+        {
+            list_of_favorite_girls.clear();
+            for(var i in data)
+            {
+                var item = data[i];
+                list_of_favorite_girls.append(item);
+            }
+        }
+    }
+
 
     ListView {
         id: girls_list
@@ -52,7 +54,7 @@ Page {
     }
 
     Component.onCompleted: {
-        // TODO: add code here to call a simple C++ function that provides
-        //  the data for the ListView.
+        var data = qbridge.getGirlsList();
+        list_of_favorite_girls.loadData(data);
     }
 }
