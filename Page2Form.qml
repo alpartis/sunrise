@@ -55,6 +55,7 @@ Page {
 
     Component.onCompleted: {
         var data = qbridge.getGirlsList();
+        console.log(data);
         list_of_favorite_girls.loadData(data);
     }
 }
