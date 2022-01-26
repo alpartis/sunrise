@@ -45,21 +45,25 @@ Rectangle {
         }
     }
 
-    Dialog {
+    BaseDialog {
         id : cdialog
         modal : true
         title : qsTr("Phone Launch?")
-        standardButtons : Dialog.Yes | Dialog.No
-        anchors.centerIn : parent
-        Label {
-            text : qsTr("Are you sure you want to launch the phone?")
-        }
+        buttons: QT_TR_NOOP(['No','Yes'])
+        bodyWidth:  250
+        bodyHeight: 150
+        text : qsTr("Are you sure you want to launch the phone?")
         visible : false
 
-        onAccepted : {
-            root.launchPhone();
+        onClicked : function(index){
+            if( index == 1) //index 1 is yes.
+            {
+                root.launchPhone();
+            }
+            this.close();
         }
     }
+
 
     function launchPhone() {
         ProgressObj.endJob();
