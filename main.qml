@@ -11,6 +11,7 @@ ApplicationWindow {
     visible: true
     color: "#000048"
     title: qsTr("Stack")
+    property ApplicationWindow appWindow : rootWindow
 
     header: ToolBar {
         id: header
