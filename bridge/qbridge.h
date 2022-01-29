@@ -19,6 +19,7 @@ public:
     explicit QBridge(QObject *parent = nullptr);
 public slots:
     const QVariant getGirlsList();
+    int daysAlive();
 };
 
 #endif // QBRIDGE_H

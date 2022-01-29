@@ -1,5 +1,6 @@
 #include "qbridge.h"
 #include <QVariant>
+#include <QDate>
 
 extern std::vector<Girl> girls;
 
@@ -9,6 +10,16 @@ QBridge::QBridge(QObject *parent)
     girls.push_back(Girl{"Amy","Bredwell"});
     girls.push_back(Girl{"Ruby","Sherwood"});
 }
+
+/******************************************************************************
+* returns number of days between 'now' and "hypothetical" Nov 1, 1965 birthday
+******************************************************************************/
+int QBridge::daysAlive()
+{
+    QDate dob(1965, 11, 1);
+    return dob.daysTo(QDate::currentDate());
+}
+
 
 const QVariant QBridge::getGirlsList()
 {
