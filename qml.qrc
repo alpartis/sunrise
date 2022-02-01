@@ -17,5 +17,13 @@
         <file>StartAnimation.qml</file>
         <file>boot_logo.svg</file>
         <file>BootProgressBar.qml</file>
+        <file>assets/icons/dialpad.svg</file>
+        <file>assets/icons/elapsed.svg</file>
+        <file>assets/icons/exit.svg</file>
+        <file>assets/icons/expand.svg</file>
+        <file>assets/icons/favorite.svg</file>
+        <file>assets/icons/page.svg</file>
+        <file>assets/icons/shield.png</file>
+        <file>assets/icons/shield.svg</file>
     </qresource>
 </RCC>
